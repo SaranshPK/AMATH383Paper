@@ -1,0 +1,119 @@
+\documentclass[11pt,oneside]{article}
+\usepackage{amsmath,amsfonts,amssymb}
+%\usepackage{pst-plot, pstricks,pstricks-add}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+\usepackage{xcolor}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\usepackage{theorem}
+%\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[latin1]{inputenc}
+\usepackage{color}
+\usepackage{epsfig}
+%\usepackage{showkeys}  Kann man aus-/einblenden, um Labels im PDF anzuzeigen
+%\setlength{\oddsidemargin}{0.5cm}
+%\setlength{\evensidemargin}{0.5cm} %\setlength{\textwidth}{13cm}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{prob}{Problem}
+\newcommand{\proof}{\noindent \textbf{Proof: }}
+\newcommand{\qed}{\hspace*{\fill} $\blacksquare$ }
+
+
+
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\thepage}
+%\fancyhead[RE,LO]{FINAL MATH328}
+	\addtolength{\voffset}{-1in}
+	\addtolength{\oddsidemargin}{-1.9in}
+	\addtolength{\evensidemargin}{-.9in}
+	\addtolength{\textwidth}{1.5in}
+	\addtolength{\marginparwidth}{-2in}
+	\addtolength{\topmargin}{-2.3in}
+		\addtolength{\footskip}{1in}
+	\addtolength{\textheight}{4in}
+\parindent 0pt
+\addtolength{\headheight}{30pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{MATH424 HW8}
+\fancyhead[RE,LO]{Abishek Hariharan\\ University of Washington}
+
+\parindent 0pt
+\raggedbottom
+%\raggedbottom
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\renewcommand{\labelenumi}{(\alph{enumi})}                  % enumerate: (a) (i)
+%\renewcommand{\labelenumii}{(\roman{enumii})}             %                          (ii) ...
+\usepackage{a4wide}
+\begin{document}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section*{Homework 8} 
+\paragraph{Active Learning}
+
+\begin{prob}
+	Nothing this week.
+\end{prob}
+
+///////////////////////////////////////////////////////////////////////////////
+
+\paragraph{General Homework}
+
+\begin{prob}
+Find the radius of convergence for the following series
+
+	 $\sum_{k=0}^{\infty}2^kx^{2k}$, $\sum_{k=1}^{\infty}\frac{(-1)^k}{2^{k+1}\sqrt k}x^k$,  
+	 $\sum_{k=0}^{\infty}(k^2+2^k)x^k$, $\sum_{k=1}^{\infty}{2k\choose k}(x+1)^{2k}$,
+	 $\sum_{k=1}^{\infty}\frac{1}{(4+(-1)^k)^{3k}}x^{5k+1}$, $\sum_{k=0}^{\infty}a^{k!}x^k, \:\:a>0$, and
+	 $\sum_{k=0}^{\infty}\left(\frac{k!}{3\cdot5\cdot7\cdot\cdot\cdot(2k+1)}\right)^2x^k$.
+
+\end{prob}
+
+\begin{prob}
+	\begin{enumerate}
+		\item Show that $\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$ is convergent for all $x\in\mathbb R$.
+		\item Show that for the function $f(x)=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k} $, $f''(x)+f(x)=0$ for
+			 all $x\in\mathbb R$ 
+		\item Which function has $\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}$ as power series expansion? (Use 307)
+	\end{enumerate}
+\end{prob}
+
+\begin{prob}
+	For each $R\in[0,\infty)\cup\{\infty\}$, find a power series with radius of convergence $R$.
+\end{prob}
+
+\begin{prob}
+	\begin{enumerate}
+		\item Find the power series expansion of $\arctan(x)$ for $|x|<1$, i.e. find how to write $\arctan(x)$ in the 
+			form $\sum_{k=0}^{\infty}a_kx^k$. Use a similar approach as in Example 4.3.4.
+		\item Write $\ln(1-2x)$ as a power series.
+	\end{enumerate}
+\end{prob}
+
+\begin{prob}%6.4.21
+	Let $f(x)=\sum_{k=0}^{\infty}a_kx^k$ be a power series such that $a_k\in\mathbb Z$ for all $k\in\mathbb N$. Assume that its 
+	radius of convergence is $R>1$. Show that $f$ is a polynomial, i.e. there is $N\in\mathbb N$ such that $a_n=0$ for all $n\ge N$. 
+\end{prob}
+
+\begin{prob}
+	Let $\sum_{k=0}^{\infty}a_kx^k$ be a power series with radius of convergence $R\in(0,\infty)$. Show that 
+	$B(X)=\sum_{k=0}^{\infty}a_kx^{k^2}$ has radius of convergence 1.
+	{\it (Hint First prove that $R_B\le 1$. To show the other direction, make use of the fact that $\limsup c_n=c$ implies that
+	there is a subsequence $c_{k_j}$ such that $c_{j_k}\rightarrow c$)}.
+\end{prob}
+
+\end{document}
