@@ -1,1 +1,1 @@
-# AMATH383Paper
+# AMATH 383 Paper
