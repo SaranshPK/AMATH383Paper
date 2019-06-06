@@ -15,7 +15,6 @@
 \usepackage[latin1]{inputenc}
 \usepackage{color}
 \usepackage{epsfig}
-\usepackage{indentfirst}
 %\usepackage{showkeys}  Kann man aus-/einblenden, um Labels im PDF anzuzeigen
 %\setlength{\oddsidemargin}{0.5cm}
 %\setlength{\evensidemargin}{0.5cm} %\setlength{\textwidth}{13cm}
@@ -40,7 +39,8 @@
 \raggedbottom
 
 \usepackage{a4wide}
-
+\usepackage{indentfirst}
+\usepackage{amsmath, systeme}
 
 \title{Paper Title}
 \author{Saransh Kacharia, Abishek Hariharan, Alex Chkodrov}
@@ -51,27 +51,51 @@
 \fancyhead[RE,LO]{Paper Title}
 
 \begin{document}
-
-\maketitle
-\pagestyle{fancy}
-\section*{Abstract}
-\section*{Problem Description}
-The Lotka-Voltera equations, also known as the predator-prey equations, are equations that model two species in a predator and prey relationship in an ecosystem. The linearized solution to this two species system is an oscillating model that shows the cyclic behavior of the species population. In 1925, the American statistician Alfred Lotka proposed a differential model to represent the concentrations of chemicals in a theoretical oscillating chemical reaction ? The same differential equations were proposed independently by the Italian mathematician Vito Volterra as a model for oscillating populations representing the populations of a predator and its prey. This model can be used to identify what is the main cause and reaction towards the overall
-\section*{Simplified Mathematical Model}
-
-Population dynamics are incredibly complex, and in order to create a differential model for the interactions of a three-species food chain, many assumptions must be made regarding the environment and factors that influence population growth. The first assumption is that the growth of the primary producer, for example plankton, is unbounded by the confines of the ocean or nutrients ? only the current population and growth rate, and the population of its predator. This applies practically to examples that have not reached a carrying capacity and/or developing populations. The only detractor of the population of the primary producer is the secondary consumer, for example a filter-feeding fish, which preys on the primary producer.\\
-
-*Insert first equation*\\
-
-The population of the secondary consumer depends on its current population, growth rate, the population of its prey (the primary producer), and the population of the apex predator. The assumption is that no other factor besides the population of the rest of the species in the food-chain affects the population of the secondary consumer; seasonality, habitat loss, and human impact are all examples of realistic factors that can impact population growth that are not accounted for in this model. \\
-
-*Insert second equation*\\
-
-The population of the apex predator depends on its current population, growth rate, and the population of its prey. Again, the assumption is that things that affect real life apex predators like mercury poisoning in tuna are not factored into this model; this assumes no outside interference in the population of either the apex predator itself or its prey.\\
-
-*Insert third equation*\\
-
-This simplified model is how the lotka-volterra system would be represented for a three-species food chain, assuming no outside interference or carrying capacity.
-
-
+	\maketitle
+	\pagestyle{fancy}
+	\section{Abstract}
+	\section{Problem Description}
+	The Lotka-Voltera equations, also known as the predator-prey equations, are equations that model two species in a predator and prey relationship in an ecosystem. The linearized solution to this two species system is an oscillating model that shows the cyclic behavior of the species population. In 1925, the American statistician Alfred Lotka proposed a differential model to represent the concentrations of chemicals in a theoretical oscillating chemical reaction ? The same differential equations were proposed independently by the Italian mathematician Vito Volterra as a model for oscillating populations representing the populations of a predator and its prey. This model can be used to identify what is the main cause and reaction towards the overall
+	\begin{equation*}
+	\systeme{
+		\frac{dx}{dt} = ax - bxy,
+		\frac{dy}{dt} = -cy + dxy
+	}
+	\end{equation*}
+	\begin{itemize}
+		\item $x(t)$ and $y(t)$ represent the population of the prey and predator populaitons respectively as functions of time
+		\item $a$ represents the growth rate constant of the prey population in the absence of predators
+		\item $b$ represents the prey's interactivity constant between the prey and the predator populations
+		\item $c$ represents the predator's natural decay rate in the absence of prey
+		\item $d$ represent's the predator's interactivity constant between the prey and the predator populations
+	\end{itemize}
+	
+	
+	\section{Simplified Mathematical Model}
+	
+	Population dynamics are incredibly complex, and in order to create a differential model for the interactions of a three-species food chain, many assumptions must be made regarding the environment and factors that influence population growth. The first assumption to make this model is that no other factor besides the population of other species in the food-chain can affect the populations' growth; seasonality, habitat loss, and human impact are all examples of realistic factors that can impact population growth that are not accounted for in this model.
+	
+	One key assumption in this model is that the rate of interaction between two species can be interpreted as the product of the two populations multiplied by some interactivity constant. It follows common sense when considering the interaction between two populations; when both populations are large, the product is large. When both populations are small, the product is small. When one population is large and one population is small, the product is somewhere in between. Thus, one can adequately model the interaction rate by the product of two populations.
+	
+	Another assumption is that the growth of the primary producer, for example plankton, is unbounded by the confines of the ocean or nutrients. Because of this assumption, this model cannot be reliably applied to environments which are near their carrying capacity. The growth of the primary producer depends on its current population multiplied by the growth rate constant. The decline of the population of the primary producer depends on the population of its predator multiplied by the primary producer's population and the interactivity constant. In this model, the only detractor of the primary producer's population is the secondary consumer, for example a filter-feeding fish, which preys on the primary producer; as mentioned above, it does not account for things such as the inavailability of nutrients and other constraints for the population growth of the primary producer.
+	
+	\begin{equation}
+	\frac{dx}{dt} = ax - bxy
+	\end{equation}
+	
+	The secondary consumer's population growth is reliant on the availability of food, represented by its own population multiplied by the population of its prey and their interactivity constant. The secondary consumer's population declines under the absence of food, requiring the addition of the decay rate constant multiplied by its own population. The secondary consumer's population also declines under predation, which depends on its own population multiplied by the predator's population and the interactivity constant. The magnitude of these changes depends on the size of the populations, which explains the use of products.
+	
+	\begin{equation}
+	\frac{dy}{dt} = dxy - ey -dyz
+	\end{equation}
+	
+	The secondary consumer's population growth is reliant on the availability of food, represented by its own population multiplied by the population of its prey and their interactivity constant. The apex predator's population declines in the absence of food, requiring the addition of the decay rate constant multiplied by its population. Again, the assumption is that things that affect real life apex predators, for example mercury poisoning in tuna, are not factored into this model.\\
+	
+	\begin{equation}
+	\frac{dz}{dt} = fyz - gz
+	\end{equation}
+	
+	This simplified model is how the lotka-volterra system would be represented for a three-species food chain, assuming no outside interference or carrying capacity.
+	
+	
 \end{document}
