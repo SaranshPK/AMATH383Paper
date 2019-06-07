@@ -46,19 +46,19 @@
 \usepackage{float}
 \graphicspath{ {./} }
 
-\title{Paper Title}
+\title{Expanding the Lotka-Volterra Model\\ to a Three-Species Food Chain}
 \author{Alex Chkodrov, Saransh Kacharia}
 \date{June, 7th 2019}
 
 \fancyhf{}
 \fancyhead[LE,RO]{Alex Chkodrov, Saransh Kacharia}
-\fancyhead[RE,LO]{Paper Title}
+\fancyhead[RE,LO]{Expanding the Lotka-Volterra Model}
 
 \begin{document}
 	\maketitle
 	\pagestyle{fancy}
 	\section{Abstract}
-	The original Lotka-Volterra model represents two interacting species. In this paper, we first create a model to represent a system of three interacting species and then use classical linear analysis techniques to determine the behavior of this system. We found results similiar to the original Lotka-Volterra system, however in three dimensions; the population of one species with respect to the others revolves around an unstable centroid, which can be perturbed with a small change in initial conditions.
+	The original Lotka-Volterra model represents two interacting species. In this paper, we first create a model to represent a system of three interacting species and then use classical linear analysis techniques to determine the behavior of this system. We found results similar to the original Lotka-Volterra system, however in three dimensions; the population of one species with respect to the others revolves around an unstable centroid, which can be perturbed with a small change in initial conditions.
 	
 	\section{Problem Description}
 	The Lotka-Voltera model, also known as the predator-prey equations, is a system of two differential equations that model the population change of two species in a predator and prey relationship. Volterra was an Italian mathematician that created the linearized solution to a two species system as an oscillating model representing the cyclic behavior of the species' populations. At the same time that Volterra created the model to represent predator prey populations, the American statistician Alfred Lotka proposed the same differential model to represent the  concentrations of the chemicals in an oscillating chemical reaction. The ubiquity of these interdependent relationships in the natural world has made the Lotka-Volterra system incredibly apt as a model for many scenarios.
@@ -71,11 +71,11 @@
 	}
 	\end{equation}
 	\begin{itemize}
-		\item $x(t)$ and $y(t)$ represent the population of the prey and predator populaitons respectively as functions of time.
+		\item $x(t)$ and $y(t)$ represent the population of the prey and predator populations respectively as functions of time.
 		\item $a$ represents the growth rate constant of the prey population in the absence of predators.
 		\item $b$ represents the prey's interactivity constant between the prey and the predator populations.
 		\item $c$ represents the predator's natural decay rate in the absence of prey.
-		\item $d$ represent's the predator's interactivity constant between the prey and the predator populations.
+		\item $d$ represents the predator's interactivity constant between the prey and the predator populations.
 	\end{itemize}
 	
 	
@@ -122,7 +122,7 @@
 		\item $g$ represents the apex predator's interactivity constant for the interaction of the apex predator and the secondary consumer.
 	\end{itemize}
 	
-	This simplified model is how the lotka-volterra system would be represented for a three-species food chain with no outside interference or carrying capacity. The complete system of differential equations for this model:
+	This simplified model is how the Lotka-Volterra system would be represented for a three-species food chain with no outside interference or carrying capacity. The complete system of differential equations for this model:
 	
 	\begin{equation}
 	\systeme{
@@ -132,14 +132,14 @@
 	}
 	\end{equation}
 	\begin{itemize}
-		\item $x(t)$, $y(t)$ and $z(t)$ represent the population of the primary producer, secondary consumer and apex predator respectively as functions of time.
-		\item $a$ represents the growth rate constant of the primary producer in the absence of the secondary consumer.
-		\item $b$ represents the primary producer's interactivity constant for the interaction of the primary producer and the secondary consumer.
-		\item $c$ represents the secondary consumer's interactivity constant for the interaction of the secondary consumer and the primary producer.
-		\item $e$ represents the decay rate constant of the secondary producer in the absence of its prey, the primary producer.
-		\item $d$ represents the secondary consumer's interactivity constant for the interaction of the secondary consumer and the apex predator.
-		\item $f$ represents the decay rate constant of the apex predator in the absence of its prey, the secondary consumer.
-		\item $g$ represents the apex predator's interactivity constant for the interaction of the apex predator and the secondary consumer.
+		\item $x(t)$, $y(t)$ and $z(t)$ represent the population of the primary producer, secondary consumer and apex predator respectively as functions of time. $x(t)$, $y(t) \geq 0$
+		\item $a$ represents the growth rate constant of the primary producer in the absence of the secondary consumer. $a > 0$.
+		\item $b$ represents the primary producer's interactivity constant for the interaction of the primary producer and the secondary consumer. $b > 0$.
+		\item $c$ represents the secondary consumer's interactivity constant for the interaction of the secondary consumer and the primary producer. $c > 0$.
+		\item $e$ represents the decay rate constant of the secondary producer in the absence of its prey, the primary producer. $e > 0$.
+		\item $d$ represents the secondary consumer's interactivity constant for the interaction of the secondary consumer and the apex predator. $d > 0$.
+		\item $f$ represents the decay rate constant of the apex predator in the absence of its prey, the secondary consumer. $f > 0$.
+		\item $g$ represents the apex predator's interactivity constant for the interaction of the apex predator and the secondary consumer. $g > 0$.
 	\end{itemize}
 	
 	
@@ -167,6 +167,7 @@
 	
 	We can tell by looking at this system that one of the critical points will be (0,0,0), and this makes logical sense because if there are no populations in the system then everything remains constant at 0.\\\\
 	Now to find the other critical points we are going to examine each nullcline.\\\\
+	%% X NULL CLINE
 	If we set $x$ equal to zero and plug it back into equation (6), we get the first nullcline.
 	\begin{equation}
 	\begin{cases}
@@ -175,7 +176,7 @@
 	\frac{dz}{dt} = fyz - gz
 	\end{cases}
 	\end{equation}
-	Now we try to find critical points on this nullcline so we have to see when $\frac{dx}{dt}$ and $\frac{dz}{dt}$ are equal to zero.
+	Now we try to find critical points on this nullcline where $\frac{dx}{dt}$ and $\frac{dz}{dt}$ are equal to zero.
 	\begin{equation}
 	\begin{cases}
 	\frac{dx}{dt} = 0\\
@@ -183,26 +184,25 @@
 	\frac{dz}{dt} = fyz - gz = 0
 	\end{cases}
 	\end{equation}
-	$\frac{dy}{dt} = 0$ when $y = 0$ or when $z = \frac{-e}{d}$, which we is not possible because $z$ has to be greater than 0 and all the constants are positive. Therefore, $y = 0$ is the only solution.\\
+	$\frac{dy}{dt} = 0$ when $y = 0$ or when $z = \frac{-e}{d}$; the latter is not possible because $z$ is a population which cannot be negative and all the constants are positive. Therefore, $y = 0$ is the only critical point along this nullcline.\\
 	That means that $\frac{dz}{dt} = 0$ only when $z = 0$
 	We found that the only critical point on this nullcline was the point (0,0,0) a point which we already knew was a critical point.\\\\
 	To analyze the behavior of the first nullcline we take the Jacobian of the system in the yz-plane.
 	\begin{equation}
-	J(x,y) = 
+	J(y,z) = 
 	\begin{bmatrix}
 	\frac{\partial}{\partial y}(-dyz - ey) && \frac{\partial}{\partial z}(-dyz - ey) \\
 	\frac{\partial}{\partial y}(fyz - gz) && \frac{\partial}{\partial z}(fyz - gz)
 	\end{bmatrix}
 	\end{equation}	
 	\begin{equation}
-	J(x,y) = 
+	J(y,z) = 
 	\begin{bmatrix}
 	-dz - e && -dy \\
 	fz && fy-g
 	\end{bmatrix}
 	\end{equation}
 	
-	%Plugging in the critical point for the jacobian
 	\begin{equation}
 	J(0,0) = 
 	\begin{bmatrix}
@@ -213,32 +213,62 @@
 	
 	The eigenvalues for the Jacobian matrix at the point (0,0) are,
 	\[\lambda = -e,-g\]
-	This tells us that the point (0,0) on the xz plane is a stable node. The behavior of this nullcline is plotted in Figure 1 and this behavior makes logical sense because without a source of food all the species die out but there is some upward trend in the beginning for the apex predator because they can consume the secondary consumer for a while.
+	This tells us that the point (0,0) on the yz plane is a stable node. The behavior of this nullcline is plotted in Figure 1 and this behavior makes logical sense because without a source of food all the species die out but there is some upward trend in the beginning for the apex predator because they can consume the secondary consumer for a while.
 	\begin{figure}[H]
 		\center
 		\includegraphics[scale=0.5]{YZ}
 		\caption{First nullcline where x(0)=0}
 	\end{figure}
 	
-	If we set $y$ equal to zero, we get
+	%% Y NULL CLINE
+	Then if we set $y$ equal to zero and plug it back into equation (6), we get the second nullcline.
 	\begin{equation}
 	\begin{cases}
 	\frac{dx}{dt} = ax\\
 	\frac{dy}{dt} = 0\\
-	\frac{dz}{dt} = gz
+	\frac{dz}{dt} = -gz
 	\end{cases}
-	\rightarrow
 	\end{equation}
+	Now we try to find critical points on this nullcline where $\frac{dx}{dt}$ and $\frac{dz}{dt}$ are equal to zero.
+	\begin{equation}
+	\begin{cases}
+	\frac{dx}{dt} = ax = 0\\
+	\frac{dy}{dt} = 0\\
+	\frac{dz}{dt} = -gz = 0
+	\end{cases}
+	\end{equation}
+	$\frac{dx}{dt} = 0$ when $x = 0$, and $\frac{dz}{dt} = 0$ when $z = 0$. Therefore, ($0$, $0$, $0$) is the only critical point along this nullcline.\\
+	We found that the only critical point on this nullcline was the point (0,0,0) a point which we already knew was a critical point.\\\\
+	To analyze the behavior of the second nullcline we take the Jacobian of the system in the xz-plane.
+	\begin{equation}
+	J(x,z) = 
+	\begin{bmatrix}
+	\frac{\partial}{\partial x}(ax) && \frac{\partial}{\partial z}(ax) \\
+	\frac{\partial}{\partial x}(-gz) && \frac{\partial}{\partial z}(-gz)
+	\end{bmatrix}
+	\end{equation}	
+	\begin{equation}
+	J(x,z) = 
+	\begin{bmatrix}
+	a && 0 \\
+	0 && -g
+	\end{bmatrix}
+	\end{equation}
+	The eigenvalues for the Jacobian matrix at the point (0,0) are,
+	\[\lambda = -a, g\]
+	This tells us that the point (0,0) on the xz plane is semi-stable. The behavior of this nullcline is plotted in Figure 2, where it seems that the population z declines while the population x increases without bound. This is applicable to real life, where the apex predator will die out for lack of food as it doesn't predate upon the primary producer.
+	
 	\begin{figure}[H]
 		\center
 		\includegraphics[scale=0.5]{XZ}
-		\caption{Pls Caption Me}
+		\caption{Second nullcline where y(0) = 0}
 	\end{figure}
-	%x(t) = ..., z(t) = ....
 	%ZX plot
 	%Description and reasoning
 	
-	If we set $z$ equal to zero, we get
+	%%Z NULL CLINE
+	
+	If we set $z$ equal to zero and plug it back into equation (6), we get the third nullcline.
 	\begin{equation}
 	\begin{cases}
 	\frac{dx}{dt} = ax - bxy\\
@@ -246,18 +276,23 @@
 	\frac{dz}{dt} = 0
 	\end{cases}
 	\end{equation}
-	
-	For the critical point ($\frac{e}{c}$, $\frac{a}{b}$, $0$), we can determine the behavior of the system by linearizing it at the critical point and examining the eigenvalues of the Jacobian of the linearized system.
-	
+	Now we try to find critical points on this nullcline where $\frac{dx}{dt}$ and $\frac{dy}{dt}$ are equal to zero.
+	\begin{equation}
+	\begin{cases}
+	\frac{dx}{dt} = ax - bxy = 0\\
+	\frac{dy}{dt} = cxy - ey = 0\\
+	\frac{dz}{dt} = 0
+	\end{cases}
+	\end{equation}
+	$\frac{dx}{dt}$ and $\frac{dy}{dt}$ are equal to zero when $x = 0$ and $y = 0$, or when $x = \frac{c}{a}$ and $y = \frac{a}{b}$. We find that the nullcline where $z = 0$ has two critical points, one point at (0, 0, 0) which we already knew of and the other point at ($\frac{c}{a}$, $\frac{a}{b}$, 0).
+	To analyze the behavior of the third nullcline we take the Jacobian of the system in the xy-plane.
 	\begin{equation}
 	J(x,y) = 
 	\begin{bmatrix}
 	\frac{\partial}{\partial x}(ax - bxy) && \frac{\partial}{\partial y}(ax - bxy) \\
 	\frac{\partial}{\partial x}(cxy - ey) && \frac{\partial}{\partial y}(cxy - ey)
 	\end{bmatrix}
-	\end{equation}
-	%Explain why J(X,Y) instead of J(X,Y,Z) because dz/dt is zero
-	
+	\end{equation}	
 	\begin{equation}
 	J(x,y) = 
 	\begin{bmatrix}
@@ -265,7 +300,11 @@
 	cy && cx - e
 	\end{bmatrix}
 	\end{equation}
+	There are two sets of eigenvalues for the Jacobian matrix, and the eigenvalues for the Jacobian at the point (0,0) are 
+	\[\lambda = -a, e\]
+	As in the last nullcline, the point (0,0) on the xy plane is semi-stable. Near the point (0, 0) the population y is declining and the population x is growing, which is representative of real life in the case of primary succession, or where the primary producer first starts growing before predators populate.
 	
+	The Jacobian at the point ($\frac{e}{c}$, $\frac{a}{b}$) is
 	%Plugging in the critical point for the jacobian
 	\begin{equation}
 	J(\frac{e}{c},\frac{a}{b}) = 
@@ -274,77 +313,65 @@
 	\frac{ca}{b} && 0
 	\end{bmatrix}
 	\end{equation}
-	
 	The eigenvalues for the Jacobian matrix at the point ($\frac{e}{c}$, $\frac{a}{b}$, $0$) are,
 	\[\lambda = \pm i\sqrt{ae}\]
+	The eigenvalues of this Jacobian are complex and different signs, which implies that the point is a center. This is the solution of the original Lotka-Volterra system, and figure 3 represents the population of x and y with respect to each other. The interpretation of this result in the context of real life is that the populations for the primary producer and the secondary consumer are periodic and cyclical in nature.
+	
+	%%%END OF NULL CLINES WHERE I STOPPED WORKING
 	
 	\begin{figure}[H]
 		\center
 		\includegraphics[scale=0.5]{XY}
-		\caption{Pls Caption Me}
+		\caption{Third nullcline where z(0) = 0}
 	\end{figure}
 	%XY plot
 	%Looks like the classic Lotka Volterra model
 	%Description and reasoning
 	
-	Cumulative plot
+	The three nullclines are combined here in Figure 4 to show the combined behavior.
 	\begin{figure}[H]
 		\center
 		\includegraphics[scale=0.80]{XYZ}
-		\caption{Pls Caption Me}
+		\caption{Cumulative Nullcline Plot}
 	\end{figure}
 	
+	Now we will find the non trivial critical point, where neither $x$, $y$, nor $z$ are zero. We solved this in equation 7, 8 and 9 where we determined that $y=\frac{a}{b}$, $x = \frac{dz + e}{c} \text{, } z = \frac{cx - e}{d}$, and $y=\frac{g}{f}$. If $\frac{a}{b} \neq \frac{g}{f}$ then there is no nontrivial critical point. However, if $y = \frac{a}{b} = \frac{g}{f}$, there is a critical line at $x = \frac{dz + e}{c}$ where the $x$ and $z$ values have to satisfy this equation. We can take the Jacobian but it doesn't give us any useful information. Chauvet agrees and they analyze the model with the center manifold theorem. We decided to analyze this critical line numerically.\\
 	
-	Par3 (population)
-	\begin{figure}[H]
-		\center
-		\includegraphics[scale=0.5]{par3}
-		\caption{Pls Caption Me}
-	\end{figure}
+	To do this we created parametric plots with different starting conditions with the variables $a=b=c=d=e=f=g=1$. $y = \frac{a}{b} = \frac{g}{f} = 1$ and we set $x$ and $z$ to slowly approach the plane $x = \frac{dz + e}{c} = z+1$\\
 	
-	
-	
-	
-	
-	%3d Jacobian
-	\begin{equation}
-	J(x,y,z) = 
-	\begin{bmatrix}
-	\frac{\partial}{\partial x}(ax - bxy) && \frac{\partial}{\partial y}(ax - bxy) && \frac{\partial}{\partial z}(ax - bxy) \\
-	\frac{\partial}{\partial x}(cxy - ey - dyz) && \frac{\partial}{\partial y}(cxy - ey - dyz) && \frac{\partial}{\partial z}(cxy - ey - dyz) \\
-	\frac{\partial}{\partial x}(fyz - gz) && \frac{\partial}{\partial y}(fyz - gz) && \frac{\partial}{\partial z}(fyz - gz)
-	\end{bmatrix}
-	\end{equation}
-	
-	\begin{equation}
-	J(x,y,z) = 
-	\begin{bmatrix}
-	a - by && - bx && 0 \\
-	cy && cx - e - dz && -dy \\
-	0 && fz && fy - g
-	\end{bmatrix}
-	\end{equation}
-	
-	\section{Results and Discussion}
-	The solution to this mathematical model for the three-species food chain offers some insight into the nature of population dynamics that support the ideas presented by the solution to the original Lotka-Volterra system. A 3D representation of  three different initial conditions are represented in the figure below, where each of the three traces represents the population of all three species in relation to one another revolving around a central point.
-	
+	Doing this gave a plot (Figure 5) that showed us that this critical line was a stable center.
 	%3Parametric
 	\begin{figure}[H]
 		\center
 		\includegraphics[scale=0.40]{3Parametric}
 		\includegraphics[scale=0.75]{Legend}
-		\caption{Pls Caption Me}
+		\caption{Parametric plot with varying initial conditions}
 	\end{figure}
 	
-	Figure 6 represents a relatively intuitive scenario similiar to the original Lotka-Volterra system analysis, in which the population of each species with respect to one another revolves around a centroid. This 3D parametric plot has axes representing the population of each species. Included below is a figure to represent the populations with respect to time instead, with three seperate lines to represent each population.
+	These three parametric curves are stable solutions to this problem with varying initial conditions. As $x \rightarrow 2$ we see that the solution curves converge. This convergence is on the point (2,1,1) which a point on the line of the intersection of plane $x=z+1$ and plane $y=1$. 
 	
+	These curves can also be seen as oscillating functions with respect to time which get straighter as $x \rightarrow 2$. (Figures 6, 7, 8)
 	\begin{figure}[H]
 		\center
-		\includegraphics[scale=0.5]{par2}
-		\caption{Pls Caption Me and include initial conditions/arbitrary conditions}
+		\includegraphics[scale=0.4]{par1}
+		\caption{Initial condition 1}
 	\end{figure}
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.42]{par2}
+		\caption{Initial condition 2}
+	\end{figure}
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.46]{par3}
+		\caption{Initial condition 3}
+	\end{figure}
+	\section{Results and Discussion}
+	The solution to this mathematical model for the three-species food chain offers some insight into the nature of population dynamics that support the ideas presented by the solution to the original Lotka-Volterra system. A 3D representation of  three different initial conditions are represented in the figure below, where each of the three traces represents the population of all three species in relation to one another revolving around a center point.\\
 	
-	Figure 7 demonstrates the existance of a kind of phase difference in the populations; this sinusoidal nature to each population was also found in the original solution to the Lotka-Volterra system. This phase difference can be interpreted as the delay between the increased availability of food and the respective increase population, which could be influenced by such things as the rate at which a species matures and the effectiveness of its predation. These influences would fall under the 'interactivity constant' described in formulating the model.
+	Figure 5 represent a relatively intuitive scenario similar to the original Lotka-Volterra system analysis, in which the population of each species with respect to one another revolves around a center line. This 3D parametric plot has axes representing the population of each species. Included below is a figure to represent the populations with respect to time instead, with three separate lines to represent each population.\\
+	
+	Figures 6, 7, 8 demonstrate the existence of a kind of phase difference in the populations; the wave nature to each population was also found in the original solution to the Lotka-Volterra system. This phase difference can be interpreted as the delay between the increased availability of food and the respective increase population, which could be influenced by such things as the rate at which a species matures and the effectiveness of its predation. These influences would fall under the `interactivity constant' described in formulating the model.
 	
 	%%Write something about stable points
 	
@@ -353,11 +380,11 @@
 	
 	The incorporation of a logistic growth curve as opposed to an unbounded exponential growth curve would greatly improve the realism of this model. Currently, this model represents the primary producer as having no constraints on its growth beyond the secondary consumer, which of course is not consistent with real life; algal blooms, for example, demonstrate unconstrained exponential growth with no natural predators until suddenly the lack of nutrients eradicates the population and results in lifeless, deoxygenated zones in the ocean. With the addition of a logistic growth curve which reaches some carrying capacity, this model would be more apt for representing any kind of population. This kind of addition to the model does not seem like it would be particularly hard or revolutionary, as it would not change any of the methods employed in solving this model.
 	
-	The three-species population model examined in this paper has demonstrated many similarities to the original two species Lotka-Volterra system, which begs the question of whether this system is generalizeable to a food chain of arbitrary length. The patterns of this model resembling the original Lotka-Volterra system lead to an intuitive understanding that this system can be generalized, and doing so might make it more representative of the n-dimensional interactive web of life; no two or three organisms interact in seclusion, and a greater degree of interaction represented with these systems might make the model more realistic. The apex predator does decompose and eventually provide nutrients back to the primary producer, and if we could include the decomposers, the primary producers, and the rest of the food web then one might have a complete understanding of the population dynamics of any given ecosystem. This seems the more difficult addition to make to the model, as it requires further linear algebra applications and fundamental redesign to the primary producer's growth equation to incorporate the circular nature of the food web.
+	The three-species population model examined in this paper has demonstrated many similarities to the original two species Lotka-Volterra system, which begs the question of whether this system is generalizable to a food chain of arbitrary length. The patterns of this model resembling the original Lotka-Volterra system lead to an intuitive understanding that this system can be generalized, and doing so might make it more representative of the n-dimensional interactive web of life; no two or three organisms interact in seclusion, and a greater degree of interaction represented with these systems might make the model more realistic. The apex predator does decompose and eventually provide nutrients back to the primary producer, and if we could include the decomposers, the primary producers, and the rest of the food web then one might have a complete understanding of the population dynamics of any given ecosystem. This seems the more difficult addition to make to the model, as it requires further linear algebra applications and fundamental redesign to the primary producer's growth equation to incorporate the circular nature of the food web.
 	
 	
 	\section{Conclusions}
-	The model presented by this paper is an addition to the originial Lotka-Volterra system where we increase the number of interacting populations to three. We analyzed the behavior of the system at the null clines and certain critical points, and then used linear analysis techniques to determine the stability of the critical points. We used the model to graph figures representing the simultaneous growth and decline of the interacting populations, which demonstrated the existence of several natural phenomena like the periodic nature of population growth.
+	The model presented by this paper is an addition to the original Lotka-Volterra system where we increase the number of interacting populations to three. We analyzed the behavior of the system at the nullclines and certain critical points, and then used linear analysis techniques to determine the stability of the critical points. We used the model to graph figures representing the simultaneous growth and decline of the interacting populations, which demonstrated the existence of several natural phenomena like the periodic nature of population growth.
 	
 	%Add more? I think its enough tho
 	
@@ -375,4 +402,3 @@
 	\end{hangparas}
 	
 \end{document}
-
