@@ -58,6 +58,8 @@
 	\maketitle
 	\pagestyle{fancy}
 	\section{Abstract}
+	The original Lotka-Volterra model represents two interacting species. In this paper, we first create a model to represent a system of three interacting species and then use classical linear analysis techniques to determine the behavior of this system. We found results similiar to the original Lotka-Volterra system, however in three dimensions; the population of one species with respect to the others revolves around an unstable centroid, which can be perturbed with a small change in initial conditions.
+	
 	\section{Problem Description}
 	The Lotka-Voltera model, also known as the predator-prey equations, is a system of two differential equations that model the population change of two species in a predator and prey relationship. Volterra was an Italian mathematician that created the linearized solution to a two species system as an oscillating model representing the cyclic behavior of the species' populations. At the same time that Volterra created the model to represent predator prey populations, the American statistician Alfred Lotka proposed the same differential model to represent the  concentrations of the chemicals in an oscillating chemical reaction. The ubiquity of these interdependent relationships in the natural world has made the Lotka-Volterra system incredibly apt as a model for many scenarios.
 	
@@ -77,7 +79,7 @@
 	\end{itemize}
 	
 	
-	In this paper, A slightly more complex version of the Lotka-Volterra system involving three interacting species will be investigating. The added complexity makes this model slightly more applicable to the modeling of real populations, as the interconnected nature of ecosystems makes it very rare to encounter a two-species food chain. ???Add more
+	In this paper, A slightly more complex version of the Lotka-Volterra system involving three interacting species will be investigating. The added complexity makes this model slightly more applicable to the modeling of real populations, as the interconnected nature of ecosystems makes it very rare to encounter a two-species food chain.
 	
 	
 	\section{Simplifications and Mathematical Model}
@@ -142,7 +144,7 @@
 	
 	
 	\section{Solution to the Mathematical Problem}
-	To solve this mathematical model we first find the critical points at which the simultaneous differential equations are all equal to zero, and then we use linear analysis to determine the stability of each critical point. 
+	To solve this mathematical model, we first find the nullclines and the critical points at which the simultaneous differential equations are equal to zero, we then use linear analysis to determine the behavior at each nullcline and the stability of each critical point.
 	\begin{equation}
 	\begin{cases}
 	\frac{dx}{dt} = ax - bxy = 0\\
@@ -157,14 +159,15 @@
 	\end{cases}
 	\end{equation}
 	
-	We find the null clines,
 	\begin{align}
 	\frac{dx}{dt} &= 0 \rightarrow x = 0 \text{ or } y = \frac{a}{b}\\
-	\frac{dy}{dt} &= 0 \rightarrow y=0 \text{ or } x = \frac{dz + e}{c} \text{ and } z = \frac{cx - e}{d}\\
+	\frac{dy}{dt} &= 0 \rightarrow y = 0 \text{ or } x = \frac{dz + e}{c} \text{ and } z = \frac{cx - e}{d}\\
 	\frac{dz}{dt} &= 0 \rightarrow z = 0 \text{ or } y = \frac{g}{f}
 	\end{align}
 	
-	If we set $x$ equal to zero, we get 
+	We can tell by looking at this system that one of the critical points will be (0,0,0), and this makes logical sense because if there are no populations in the system then everything remains constant at 0.\\\\
+	Now to find the other critical points we are going to examine each nullcline.\\\\
+	If we set $x$ equal to zero and plug it back into equation (6), we get the first nullcline.
 	\begin{equation}
 	\begin{cases}
 	\frac{dx}{dt} = 0\\
@@ -172,13 +175,50 @@
 	\frac{dz}{dt} = fyz - gz
 	\end{cases}
 	\end{equation}
+	Now we try to find critical points on this nullcline so we have to see when $\frac{dx}{dt}$ and $\frac{dz}{dt}$ are equal to zero.
+	\begin{equation}
+	\begin{cases}
+	\frac{dx}{dt} = 0\\
+	\frac{dy}{dt} = -dyz - ey = 0\\
+	\frac{dz}{dt} = fyz - gz = 0
+	\end{cases}
+	\end{equation}
+	$\frac{dy}{dt} = 0$ when $y = 0$ or when $z = \frac{-e}{d}$, which we is not possible because $z$ has to be greater than 0 and all the constants are positive. Therefore, $y = 0$ is the only solution.\\
+	That means that $\frac{dz}{dt} = 0$ only when $z = 0$
+	We found that the only critical point on this nullcline was the point (0,0,0) a point which we already knew was a critical point.\\\\
+	To analyze the behavior of the first nullcline we take the Jacobian of the system in the yz-plane.
+	\begin{equation}
+	J(x,y) = 
+	\begin{bmatrix}
+	\frac{\partial}{\partial y}(-dyz - ey) && \frac{\partial}{\partial z}(-dyz - ey) \\
+	\frac{\partial}{\partial y}(fyz - gz) && \frac{\partial}{\partial z}(fyz - gz)
+	\end{bmatrix}
+	\end{equation}	
+	\begin{equation}
+	J(x,y) = 
+	\begin{bmatrix}
+	-dz - e && -dy \\
+	fz && fy-g
+	\end{bmatrix}
+	\end{equation}
+	
+	%Plugging in the critical point for the jacobian
+	\begin{equation}
+	J(0,0) = 
+	\begin{bmatrix}
+	-e && 0 \\
+	0 && -g
+	\end{bmatrix}
+	\end{equation}
+	
+	The eigenvalues for the Jacobian matrix at the point (0,0) are,
+	\[\lambda = -e,-g\]
+	This tells us that the point (0,0) on the xz plane is a stable node. The behavior of this nullcline is plotted in Figure 1 and this behavior makes logical sense because without a source of food all the species die out but there is some upward trend in the beginning for the apex predator because they can consume the secondary consumer for a while.
 	\begin{figure}[H]
 		\center
 		\includegraphics[scale=0.5]{YZ}
-		\caption{Pls Caption Me}
+		\caption{First nullcline where x(0)=0}
 	\end{figure}
-	%YX Plot
-	%Description and reasoning
 	
 	If we set $y$ equal to zero, we get
 	\begin{equation}
@@ -255,6 +295,17 @@
 	\end{figure}
 	
 	
+	Par3 (population)
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.5]{par3}
+		\caption{Pls Caption Me}
+	\end{figure}
+	
+	
+	
+	
+	
 	%3d Jacobian
 	\begin{equation}
 	J(x,y,z) = 
@@ -275,6 +326,27 @@
 	\end{equation}
 	
 	\section{Results and Discussion}
+	The solution to this mathematical model for the three-species food chain offers some insight into the nature of population dynamics that support the ideas presented by the solution to the original Lotka-Volterra system. A 3D representation of  three different initial conditions are represented in the figure below, where each of the three traces represents the population of all three species in relation to one another revolving around a central point.
+	
+	%3Parametric
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.40]{3Parametric}
+		\includegraphics[scale=0.75]{Legend}
+		\caption{Pls Caption Me}
+	\end{figure}
+	
+	Figure 6 represents a relatively intuitive scenario similiar to the original Lotka-Volterra system analysis, in which the population of each species with respect to one another revolves around a centroid. This 3D parametric plot has axes representing the population of each species. Included below is a figure to represent the populations with respect to time instead, with three seperate lines to represent each population.
+	
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.5]{par2}
+		\caption{Pls Caption Me and include initial conditions/arbitrary conditions}
+	\end{figure}
+	
+	Figure 7 demonstrates the existance of a kind of phase difference in the populations; this sinusoidal nature to each population was also found in the original solution to the Lotka-Volterra system. This phase difference can be interpreted as the delay between the increased availability of food and the respective increase population, which could be influenced by such things as the rate at which a species matures and the effectiveness of its predation. These influences would fall under the 'interactivity constant' described in formulating the model.
+	
+	%%Write something about stable points
 	
 	\section{Improvement}
 	There are several improvements that could be made to this model. A few of the most critical issues one might address to apply this model to real life scenarios might be to incorporate carrying capacity constrained growth, an arbitrary number of species in the food chain, and more depending on the specificity desired.
@@ -285,14 +357,19 @@
 	
 	
 	\section{Conclusions}
+	The model presented by this paper is an addition to the originial Lotka-Volterra system where we increase the number of interacting populations to three. We analyzed the behavior of the system at the null clines and certain critical points, and then used linear analysis techniques to determine the stability of the critical points. We used the model to graph figures representing the simultaneous growth and decline of the interacting populations, which demonstrated the existence of several natural phenomena like the periodic nature of population growth.
+	
+	%Add more? I think its enough tho
 	
 	\section{References}
 	\begin{hangparas}{.25in}{1}
+		Boyce, William E., and Richard C. DiPrima. \textit{Elementary Differential Equations and Boundary Value Problems}. 10th ed., John Wiley \& Sons, Inc., 2017.
+		
 		Chauvet, Erica, et al. "A Lotka-Volterra Three-Species Food Chain." \textit{Mathematics Magazine}, Oct. 2002, pp. 243-255.
 		
 		Lotka, Alfred J. \textit{Elements of Mathematical Biology}. Dover Publications, 1956.
 		
-		Boyce, William E., and Richard C. DiPrima. \textit{Elementary Differential Equations and Boundary Value Problems}. 10th ed., John Wiley \& Sons, Inc., 2017.
+		Tung, K. K. \textit{Topics in Mathematical Modeling}. Princeton University Press, 2007.
 		
 		
 	\end{hangparas}
