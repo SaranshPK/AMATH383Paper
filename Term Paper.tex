@@ -42,9 +42,12 @@
 %\usepackage{indentfirst}
 \usepackage{amsmath, systeme}
 \usepackage{hanging}
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{ {./} }
 
 \title{Paper Title}
-\author{Saransh Kacharia, Abishek Hariharan, Alex Chkodrov}
+\author{Alex Chkodrov, Saransh Kacharia}
 \date{June, 7th 2019}
 
 \fancyhf{}
@@ -56,7 +59,9 @@
 	\pagestyle{fancy}
 	\section{Abstract}
 	\section{Problem Description}
-	The Lotka-Voltera equations, also known as the predator-prey equations, are equations that model two species in a predator and prey relationship in an ecosystem. The linearized solution to this two species system is an oscillating model that shows the cyclic behavior of the species population. In 1925, the American statistician Alfred Lotka proposed a differential model to represent the concentrations of chemicals in a theoretical oscillating chemical reaction ? The same differential equations were proposed independently by the Italian mathematician Vito Volterra as a model for oscillating populations representing the populations of a predator and its prey. This model can be used to identify what is the main cause and reaction towards the overall
+	The Lotka-Voltera model, also known as the predator-prey equations, is a system of two differential equations that model the population change of two species in a predator and prey relationship. Volterra was an Italian mathematician that created the linearized solution to a two species system as an oscillating model representing the cyclic behavior of the species' populations. At the same time that Volterra created the model to represent predator prey populations, the American statistician Alfred Lotka proposed the same differential model to represent the  concentrations of the chemicals in an oscillating chemical reaction. The ubiquity of these interdependent relationships in the natural world has made the Lotka-Volterra system incredibly apt as a model for many scenarios.
+	
+	The original Lotka-Volterra equations:
 	\begin{equation}
 	\systeme{
 		\frac{dx}{dt} = ax - bxy,
@@ -70,6 +75,9 @@
 		\item $c$ represents the predator's natural decay rate in the absence of prey.
 		\item $d$ represent's the predator's interactivity constant between the prey and the predator populations.
 	\end{itemize}
+	
+	
+	In this paper, A slightly more complex version of the Lotka-Volterra system involving three interacting species will be investigating. The added complexity makes this model slightly more applicable to the modeling of real populations, as the interconnected nature of ecosystems makes it very rare to encounter a two-species food chain. ???Add more
 	
 	
 	\section{Simplifications and Mathematical Model}
@@ -136,12 +144,117 @@
 	\section{Solution to the Mathematical Problem}
 	To solve this mathematical model we first find the critical points at which the simultaneous differential equations are all equal to zero, and then we use linear analysis to determine the stability of each critical point. 
 	\begin{equation}
-	\systeme{
-		\frac{dx}{dt} = ax - bxy = 0,
-		\frac{dy}{dt} = cxy - ey -dyz = 0,
-		\frac{dz}{dt} = fyz - gz = 0
-	}
+	\begin{cases}
+	\frac{dx}{dt} = ax - bxy = 0\\
+	\frac{dy}{dt} = cxy - ey -dyz = 0\\
+	\frac{dz}{dt} = fyz - gz = 0
+	\end{cases}
 	\end{equation}
+	\begin{equation}
+	\begin{cases}
+	\frac{dx}{dt} = x(a-by) = 0\\
+	\frac{dy}{dt} = y(cx - e -dz) = 0\\
+	\frac{dz}{dt} = z(fy - g) = 0
+	\end{cases}
+	\end{equation}
+	
+	We find the null clines,
+	\begin{align}
+	\frac{dx}{dt} &= 0 \rightarrow x = 0 \text{ or } y = \frac{a}{b}\\
+	\frac{dy}{dt} &= 0 \rightarrow y=0 \text{ or } x = \frac{dz + e}{c} \text{ and } z = \frac{cx - e}{d}\\
+	\frac{dz}{dt} &= 0 \rightarrow z = 0 \text{ or } y = \frac{g}{f}
+	\end{align}
+	
+	If we set $x$ equal to zero, we get 
+	\begin{equation}
+	\begin{cases}
+	\frac{dx}{dt} = 0\\
+	\frac{dy}{dt} = -dyz - ey\\
+	\frac{dz}{dt} = fyz - gz
+	\end{cases}
+	\end{equation}
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.5]{YZ}
+		\caption{Pls Caption Me}
+	\end{figure}
+	%YX Plot
+	%Description and reasoning
+	
+	If we set $y$ equal to zero, we get
+	\begin{equation}
+	\begin{cases}
+	\frac{dx}{dt} = ax\\
+	\frac{dy}{dt} = 0\\
+	\frac{dz}{dt} = gz
+	\end{cases}
+	\rightarrow
+	\end{equation}
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.5]{XZ}
+		\caption{Pls Caption Me}
+	\end{figure}
+	%x(t) = ..., z(t) = ....
+	%ZX plot
+	%Description and reasoning
+	
+	If we set $z$ equal to zero, we get
+	\begin{equation}
+	\begin{cases}
+	\frac{dx}{dt} = ax - bxy\\
+	\frac{dy}{dt} = cxy - ey\\
+	\frac{dz}{dt} = 0
+	\end{cases}
+	\end{equation}
+	
+	For the critical point ($\frac{e}{c}$, $\frac{a}{b}$, $0$), we can determine the behavior of the system by linearizing it at the critical point and examining the eigenvalues of the Jacobian of the linearized system.
+	
+	\begin{equation}
+	J(x,y) = 
+	\begin{bmatrix}
+	\frac{\partial}{\partial x}(ax - bxy) && \frac{\partial}{\partial y}(ax - bxy) \\
+	\frac{\partial}{\partial x}(cxy - ey) && \frac{\partial}{\partial y}(cxy - ey)
+	\end{bmatrix}
+	\end{equation}
+	%Explain why J(X,Y) instead of J(X,Y,Z) because dz/dt is zero
+	
+	\begin{equation}
+	J(x,y) = 
+	\begin{bmatrix}
+	a - by && -bx \\
+	cy && cx - e
+	\end{bmatrix}
+	\end{equation}
+	
+	%Plugging in the critical point for the jacobian
+	\begin{equation}
+	J(\frac{e}{c},\frac{a}{b}) = 
+	\begin{bmatrix}
+	0 && \frac{be}{c} \\
+	\frac{ca}{b} && 0
+	\end{bmatrix}
+	\end{equation}
+	
+	The eigenvalues for the Jacobian matrix at the point ($\frac{e}{c}$, $\frac{a}{b}$, $0$) are,
+	\[\lambda = \pm i\sqrt{ae}\]
+	
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.5]{XY}
+		\caption{Pls Caption Me}
+	\end{figure}
+	%XY plot
+	%Looks like the classic Lotka Volterra model
+	%Description and reasoning
+	
+	Cumulative plot
+	\begin{figure}[H]
+		\center
+		\includegraphics[scale=0.80]{XYZ}
+		\caption{Pls Caption Me}
+	\end{figure}
+	
 	
 	\section{Results and Discussion}
 	
