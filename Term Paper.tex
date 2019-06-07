@@ -69,11 +69,11 @@
 	}
 	\end{equation}
 	\begin{itemize}
-		\item $x(t)$ and $y(t)$ represent the population of the prey and predator populaitons respectively as functions of time.
+		\item $x(t)$ and $y(t)$ represent the population of the prey and predator populations respectively as functions of time.
 		\item $a$ represents the growth rate constant of the prey population in the absence of predators.
 		\item $b$ represents the prey's interactivity constant between the prey and the predator populations.
 		\item $c$ represents the predator's natural decay rate in the absence of prey.
-		\item $d$ represent's the predator's interactivity constant between the prey and the predator populations.
+		\item $d$ represents the predator's interactivity constant between the prey and the predator populations.
 	\end{itemize}
 	
 	
@@ -120,7 +120,7 @@
 		\item $g$ represents the apex predator's interactivity constant for the interaction of the apex predator and the secondary consumer.
 	\end{itemize}
 	
-	This simplified model is how the lotka-volterra system would be represented for a three-species food chain with no outside interference or carrying capacity. The complete system of differential equations for this model:
+	This simplified model is how the Lotka-Volterra system would be represented for a three-species food chain with no outside interference or carrying capacity. The complete system of differential equations for this model:
 	
 	\begin{equation}
 	\systeme{
@@ -149,8 +149,7 @@
 	\frac{dy}{dt} = cxy - ey -dyz = 0\\
 	\frac{dz}{dt} = fyz - gz = 0
 	\end{cases}
-	\end{equation}
-	\begin{equation}
+	\rightarrow
 	\begin{cases}
 	\frac{dx}{dt} = x(a-by) = 0\\
 	\frac{dy}{dt} = y(cx - e -dz) = 0\\
@@ -259,6 +258,12 @@
 	\section{Results and Discussion}
 	
 	\section{Improvement}
+	There are several improvements that could be made to this model. A few of the most critical issues one might address to apply this model to real life scenarios might be to incorporate carrying capacity constrained growth, an arbitrary number of species in the food chain, and more depending on the specificity desired.
+	
+	The incorporation of a logistic growth curve as opposed to an unbounded exponential growth curve would greatly improve the realism of this model. Currently, this model represents the primary producer as having no constraints on its growth beyond the secondary consumer, which of course is not consistent with real life; algal blooms, for example, demonstrate unconstrained exponential growth with no natural predators until suddenly the lack of nutrients eradicates the population and results in lifeless, deoxygenated zones in the ocean. With the addition of a logistic growth curve which reaches some carrying capacity, this model would be more apt for representing any kind of population. This kind of addition to the model does not seem like it would be particularly hard or revolutionary, as it would not change any of the methods employed in solving this model.
+	
+	The three-species population model examined in this paper has demonstrated many similarities to the original two species Lotka-Volterra system, which begs the question of whether this system is generalizable to a food chain of arbitrary length. The patterns of this model resembling the original Lotka-Volterra system lead to an intuitive understanding that this system can be generalized, and doing so might make it more representative of the n-dimensional interactive web of life; no two or three organisms interact in seclusion, and a greater degree of interaction represented with these systems might make the model more realistic. The apex predator does decompose and eventually provide nutrients back to the primary producer, and if we could include the decomposer, the primary producers, and the rest of the food web then one might have a complete understanding of the population dynamics of any given ecosystem. This seems the more difficult addition to make to the model, as it requires further linear algebra applications and fundamental redesign to the primary producer's growth equation to incorporate the circular nature of the food web.
+	
 	
 	\section{Conclusions}
 	
